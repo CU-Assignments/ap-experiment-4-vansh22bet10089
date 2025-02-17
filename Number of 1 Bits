@@ -1,0 +1,38 @@
+Aim- String Matching, Hashing, 
+Heap: In this experiment, students 
+will learn about String Matching, 
+Hashing, and Heap data structures. 
+
+objective -The objective of the code is to calculate the number of set bits (1s) in the binary representation of a given positive integer n. This is also known as the Hamming weight of the number. The Hamming weight is a fundamental concept in computer science and is used in various applications, such as error detection, cryptography, and bit manipulation algorithms.
+#include <iostream>
+
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int count = 0;
+        while (n) {
+            count += n & 1; // Check if the least significant bit is 1
+            n >>= 1;        // Right shift n by 1 to process the next bit
+        }
+        return count;
+    }
+};
+
+// Main function to test the solution
+int main() {
+    Solution solution;
+
+    // Test case 1
+    uint32_t n1 = 11;
+    std::cout << "Test case 1 output: " << solution.hammingWeight(n1) << std::endl; // Expected output: 3
+
+    // Test case 2
+    uint32_t n2 = 128;
+    std::cout << "Test case 2 output: " << solution.hammingWeight(n2) << std::endl; // Expected output: 1
+
+    // Test case 3
+    uint32_t n3 = 2147483645;
+    std::cout << "Test case 3 output: " << solution.hammingWeight(n3) << std::endl; // Expected output: 30
+
+    return 0;
+}
