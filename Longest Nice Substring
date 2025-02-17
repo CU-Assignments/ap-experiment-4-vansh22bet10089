@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+
+class Solution {
+public:
+    std::string longestNiceSubstring(std::string s) {
+        int n = s.length();
+        std::string longestNiceSubstring = "";
+
+        for (int i = 0; i < n; ++i) {
+            int lowerCaseFlags = 0;
+            int upperCaseFlags = 0;
+
+            for (int j = i; j < n; ++j) {
+                if (islower(s[j])) {
+                    lowerCaseFlags |= (1 << (s[j] - 'a'));
+                } else {
+                    upperCaseFlags |= (1 << (s[j] - 'A'));
+                }
+
+                if (lowerCaseFlags == upperCaseFlags && longestNiceSubstring.length() < j - i + 1) {
+                    longestNiceSubstring = s.substr(i, j - i + 1);
+                }
+            }
+        }
+
+        return longestNiceSubstring;
+    }
+};
